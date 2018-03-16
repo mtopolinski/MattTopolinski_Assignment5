@@ -1,25 +1,31 @@
 var mongoose = require('mongoose');
 var Item = mongoose.model('Item');
 
+var allItems = angular.module('allItems');
+
+allItems.controller('itemsController', function() {
+        /* GET list of items */
+        module.exports.itemsForBid = function(req, res) {
+            Item
+                .find()
+                .exec(
+                    function(err, results) {
+                        if (err) {
+                            console.log('results error:', err);
+                            sendJSONresponse(res, 404, err);
+                        } else {
+                            sendJSONresponse(res, 200, results);
+                        }
+                    });
+        };
+    });
+
 var sendJSONresponse = function(res, status, content) {
   res.status(status);
   res.json(content);
 };
 
-/* GET list of items */
-module.exports.itemsForBid = function(req, res) {
-    Item
-        .find()
-        .exec(
-            function(err, results) {
-                if (err) {
-                    console.log('results error:', err);
-                    sendJSONresponse(res, 404, err);
-                } else {
-                    sendJSONresponse(res, 200, results);
-                }
-            });
-};
+
 
 /* GET a item by the id */
 module.exports.itemsReadOne = function(req, res) {
