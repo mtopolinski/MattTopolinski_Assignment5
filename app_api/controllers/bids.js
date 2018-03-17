@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var Item = mongoose.model('Item');
 
+var addBid = angular.module('addBid');
+
 var sendJSONresponse = function(res, status, content) {
     res.status(status);
     res.json(content);
