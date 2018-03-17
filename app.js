@@ -8,6 +8,7 @@ require('./app_api/models/db');
 var angular = require('angular');
 
 var listItems = require('./app_api/routes/listItems');
+var addItem = require('./app_api/routes/addItem');
 var routes = require('./app_server/routes/index');
 var routesApi = require('./app_api/routes/index');
 
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/listItems', listItems);
+app.use('/addItem', addItem);
 app.use('/api', routesApi);
 
 // catch 404 and forward to error handler
