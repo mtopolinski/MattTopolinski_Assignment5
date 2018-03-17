@@ -10,25 +10,24 @@ router.get('/', function(req, res, next) {
 });
 
 /* Handle POST from page form. */
-router.post('/', function(req, res, next) {
+router.put('/', function(req, res, next) {
 
-    console.log('addItem post from form');
+    console.log('addBid post from form');
     console.log(req.body.name);
     console.log(req.body.description);
 
 
 
-    const path = 'http://localhost:3000/items';
+    const path = 'http://localhost:3000/items/:itemId';
     var postdata = {
 
-        name: req.body.name,
-        description: req.body.description,
-        startingPrice: req.body.startingPrice
+        bids: {username: req.body.username,
+            price: req.body.price}
 
     };
     const requestOptions = {
         url : path,
-        method : 'POST',
+        method : 'PUT',
         json : postdata
 
 
@@ -40,7 +39,7 @@ router.post('/', function(req, res, next) {
 
             console.log(body);
 
-            res.render('addItem', { title: 'addItem', Items: body});
+            res.render('addBid', { title: 'addBid', Items: body});
         })
     );
 });
