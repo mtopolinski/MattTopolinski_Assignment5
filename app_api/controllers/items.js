@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Item = mongoose.model('Item');
 
 var allItems = angular.module('allItems');
+var addItem = angular.module('addItem');
 
 allItems.controller('itemsController', function() {
         /* GET list of items */
