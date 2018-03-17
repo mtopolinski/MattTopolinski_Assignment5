@@ -9,12 +9,15 @@ var angular = require('angular');
 
 var listItems = require('./app_api/routes/listItems');
 var addItem = require('./app_api/routes/addItem');
+var addBid = require('./app_api/routes/addBid');
 var routes = require('./app_server/routes/index');
 var routesApi = require('./app_api/routes/index');
 
 var app = express();
 
 var allItems = angular.module('allItems', []);
+var addItem = angular.module('addItem', []);
+var addBid = angular.module('addBid', []);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
@@ -31,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/listItems', listItems);
 app.use('/addItem', addItem);
+app.use('/addBid', addBid);
 app.use('/api', routesApi);
 
 // catch 404 and forward to error handler
