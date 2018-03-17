@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html ng-app="allItems>
+<html ng-app="addBid>
 <head>
 <script src='/angular/angular.min.js'></script>
 <meta charset="utf-8">
-<title> Assignment 5 List Items Page</title>
-.col-xs-12.col-sm-8(ng-controller="itemsController")
+<title> Assignment 5 Add Bid Page</title>
+.col-xs-12.col-sm-8(ng-controller="bidsController")
     .error {{message}}
         .row.list-group
-            .col-xs-12.list-group-item(ng-repeat="items in data.Items")
+            .col-xs-12.list-group-item(ng-model="addBid")
                 h4
-                    a(href="/items/{{ Items.itemId }}") {{ Items.name }}
+                    small {{ Items.name }}
                     small {{ Items.description }}
                     span.badge.pull-right.badge-default {{ Items.startingPrice }}
                 p.bids {{ Items.bids }}
