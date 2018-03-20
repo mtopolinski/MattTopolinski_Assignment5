@@ -5,7 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 require('./app_api/models/db');
-var angular = require('angular');
 
 var listItems = require('./app_api/routes/listItems');
 var addItem = require('./app_api/routes/addItem');
@@ -15,9 +14,6 @@ var routesApi = require('./app_api/routes/index');
 
 var app = express();
 
-var allItems = angular.module('allItems', []);
-var addItem = angular.module('addItem', []);
-var addBid = angular.module('addBid', []);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
