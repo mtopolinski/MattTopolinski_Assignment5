@@ -1,17 +1,20 @@
-<!DOCTYPE html>
-<html ng-app="allItems>
-<head>
-<script src='/angular/angular.min.js'></script>
-<meta charset="utf-8">
-<title> Assignment 5 List Items Page</title>
-.col-xs-12.col-sm-8(ng-controller="itemsController")
-    .error {{message}}
-        .row.list-group
-            .col-xs-12.list-group-item(ng-repeat="items in data.Items")
-                h4
-                    a(href="/items/{{ Items.itemId }}") {{ Items.name }}
-                    small {{ Items.description }}
-                    span.badge.pull-right.badge-default {{ Items.startingPrice }}
-                p.bids {{ Items.bids }}
+extends layout
 
-</body>
+block content
+    body
+
+        .col-xs-12.col-sm-8(ng-controller="itemListControl")
+            .error {{message}}
+            .row.list-group
+                    h4 Hard-coded Items via Angular
+                    p.name {{ items.name }}
+                    p.description {{ items.description }}
+                    p.startingPrice {{ items.startingPrice }}
+                    p.bids {{ items.bids }}
+
+
+        .col-xs-12.col-sm-8(ng-controller="getListItems")
+            .error {{message}}
+            .row.list-group
+                h4 Items from Mongo via Angular
+                p.data {{ data }}
